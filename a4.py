@@ -27,14 +27,38 @@ class TTTBoard:
         return True 
 
     def has_won(self, player) -> bool:
-        check = player + player + player
-        for x in [0,8]
+        win = player + player + player
+        
         for x in [0, 3, 6]:
             s = ""
             s += self.board[x + 0] + self.board[x + 1] + self.board[x + 2]
 
-            if check == s:
+            if s == win:
                 return True
+            
+        for x in [0,1,2]:
+            s = ""
+            s += self.board[x + 0] + self.board[x + 3] + self.board[x + 6]
+
+            if s == win:
+                return True
+            
+        diag1 = self.board[2]+self.board[4]+self.board[6]
+        diag2 = self.board[0]+self.board[4]+self.board[8]
+        if diag1 == win:
+            return True
+        if diag2 == win:
+            return True
+        
+        return False
+
+    def game_over(self) -> bool:
+        
+        if self.has_won("X") == True or self.has_won("O") == True or x == True:
+            return True
+        
+        return False
+
 
 def play_tic_tac_toe() -> None:
     """Uses your class to play TicTacToe"""
