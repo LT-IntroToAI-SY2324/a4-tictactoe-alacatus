@@ -53,10 +53,13 @@ class TTTBoard:
         return False
 
     def game_over(self) -> bool:
-        
+        for x in range(9):
+            if self.board[x] == "*":
+                print("someone still needs to move")
+                return False
+                
         if self.has_won("X") == True or self.has_won("O") == True or x == True:
             return True
-        
         return False
 
 
